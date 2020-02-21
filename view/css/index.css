@@ -1,0 +1,42 @@
+/* BODY */
+body{
+    background-image: url("../img/bg.png");
+    background-repeat: repeat;
+}
+
+/* CARRUSEL */
+.carousel{
+    height: 25vh !important;
+}
+
+.carousel-item{
+    position: relative !important;
+    height:25vh !important;
+    width: 100% !important;
+    overflow: hidden !important;
+}
+
+.carousel-item>img{
+    width: 100%;
+    height: auto;
+    overflow: hidden;
+    margin-top: -200px;
+}
+
+/* NAV */
+nav{
+    border-bottom: 1px solid rgb(46, 46, 46);
+}
+
+/* MAIN */
+.contenidoMain{
+    height: 60vh;
+}
+
+/* FOOTER */
+.footer{
+    height: 10vh;
+    border-top: 1px solid rgb(46, 46, 46);
+
+}
+
