@@ -1,7 +1,11 @@
 /* BODY */
 body{
-    background-image: url("../img/bg.png");
-    background-repeat: repeat;
+    /* background-image: url("../img/bg.png");
+    background-repeat: repeat; */
+}
+
+.containerAll{
+    padding: 0 !important;
 }
 
 /* CARRUSEL */
@@ -30,7 +34,17 @@ nav{
 
 /* MAIN */
 .contenidoMain{
-    height: 60vh;
+    width: 100vh;
+    margin:auto;
+    padding-bottom: 1px;
+}
+
+.imgIndex{
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+    border:1px solid darkgray;
+    border-radius: 15px;
 }
 
 /* FOOTER */
