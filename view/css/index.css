@@ -1,7 +1,7 @@
 /* BODY */
 body{
-    /* background-image: url("../img/bg.png");
-    background-repeat: repeat; */
+    background-image: url("../img/bg.png");
+    background-repeat: repeat;
 }
 
 .containerAll{
@@ -54,3 +54,51 @@ nav{
 
 }
 
+/* MEDIA QUERY */
+@media only screen and (max-width: 600px) {
+    #carouselDestila2{
+        display:none;
+    }
+
+    body{
+        background-color: #343a40 !important;
+        background-image: none;
+    } 
+
+    .navbar{
+        width: 60vh !important;
+    }
+  }
+
+  @media only screen and (max-width: 1000px) {
+
+    .carousel-item>img{      
+        height: 50vh;      
+    }
+
+    .contenidoMain{
+        width: 100%;
+        margin:auto;
+        padding-bottom: 1px;
+        height: 90vh;
+    }
+
+    h1{
+        font-size: 30px !important;
+    }
+
+    .imgIndex{
+        width:100%;
+        height:auto;
+        margin-bottom:10px;
+    }
+
+    .footer{
+        height: 100%; 
+        padding-bottom: 10px;  
+    }
+
+    body{
+        margin:0 !important;
+    }
+  }
