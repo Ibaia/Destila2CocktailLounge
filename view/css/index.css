@@ -68,6 +68,10 @@ nav{
     .navbar{
         width: 60vh !important;
     }
+
+    .footer{
+        display: none;
+    }
   }
 
   @media only screen and (max-width: 1000px) {
@@ -93,10 +97,7 @@ nav{
         margin-bottom:10px;
     }
 
-    .footer{
-        height: 100%; 
-        padding-bottom: 10px;  
-    }
+
 
     body{
         margin:0 !important;
