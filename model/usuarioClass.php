@@ -1,6 +1,6 @@
 <?php
 
-class bebidaClass{
+class usuarioClass{
     
     public $idUsuario;
     public $usuario;

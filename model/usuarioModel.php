@@ -77,8 +77,30 @@ class usuarioModel extends usuarioClass{
         $this->CloseConnect();
     }
     
+    //Borrar un usuario
+    public function userDelete($idUser){
+        $this->OpenConnect();
+        
+        $sql="call spDeleteUser('$idUser')";
+        
+        $result= $this->link->query($sql);
+        
+        $this->CloseConnect();
+    }
     
-    
+    //Convierte el texto en objecto para recivirlo y utilizarlo
+    public function getListString(){
+        $arr=array();
+        
+        foreach ($this->list as $object)
+        {
+            $vars = $object->getObjectVars();
+            
+            array_push($arr, $vars);
+        }
+        return json_encode($arr, JSON_FORCE_OBJECT);
+        //JSON_FORCE_OBJECT fuerza a lo que se reciba pase a objeto
+    }
     
     
 }

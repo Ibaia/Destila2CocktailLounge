@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html>
+<html ng-app="myapp">
 <head>
 <meta charset="ISO-8859-1">
 <title>Insert title here</title>
@@ -8,8 +8,13 @@
 <link rel="stylesheet" href="css/bootstrap.min.css">
 <link rel="stylesheet" href="css/bootstrap-grid.min.css">
 <!-- JS, jquery -->
-<body>
+<script src="js/angular.min.js" type="text/javascript"></script>
+<script src="js/admin.js"></script>
+<script src="js/bootstrap.min.js"></script>
+<script src="js/bootstrap.bundle.min.js"></script>
 
+
+<body ng-controller="admin">
 
  <!--header  -->
 <!--
@@ -52,39 +57,53 @@
 
 <!--Contenido -->
 <div class="container">
-
   <h1 class="text-center">Panel de administracion</h1>
     
 
   <!--Usuarios -->
     <div id="usuarios">
       <h3>Usuarios</h3>
+      <!-- Aniadir Usuarios  (desplegar Formulario)-->
+      <button class="btn btn-primary"> Aniadir usuario </button>
+
+      <!--Formulario Añadir usuario -->
+
+      <!-- Fin Formulario Añadir usuario -->
+
+      <!--Datos Usuarios -->
       <table class="table">
         <thead>
           <tr>
+          	<th scope="col">Id usuario</th>
             <th scope="col">Usuario</th>
             <th scope="col">Nombre</th>
             <th scope="col">Apellido</th>
             <th scope="col">Telefono</th>
             <th scope="col">DNI</th>
             <th scope="col">Email</th>
-            <th scope="col">Contraseña</th>
+            <th scope="col">Contrasenia</th>
           </tr>
         </thead>
 
         <tbody>
-          <tr>
+          <tr ng-repeat="usuario in usuarios">
             <!--Angular Aqui -->
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
+
+            <th scope="row">{{usuario.idUsuario}}</th>
+            <td>{{usuario.usuario}}</td>
+            <td>{{usuario.nombre}}</td>
+            <td>{{usuario.apellido}}</td>
+            <td>{{usuario.telefono}}</td>
+            <td>{{usuario.dni}}</td>
+            <td>{{usuario.email}}</td>
+            <td>{{usuario.pass}}</td>
+            <!--Borrar usuario -->
+            <td><button class="btn btn-primary" ng-click="deleteUser(usuario.idUsuario)">Borrar</button></td>
+            <td><button>Update</button></td>
           </tr>
         </tbody>
       </table>
+      <!--Fin datos usuarios -->
     </div>
   
   
