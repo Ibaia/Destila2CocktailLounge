@@ -65,16 +65,12 @@ nav{
         background-image: none;
     } 
 
-    .navbar{
-        width: 60vh !important;
-    }
-
     .footer{
         display: none;
     }
   }
 
-  @media only screen and (max-width: 1000px) {
+  @media only screen and (max-width: 1300px) {
 
     .carousel-item>img{      
         height: 50vh;      
@@ -84,7 +80,11 @@ nav{
         width: 100%;
         margin:auto;
         padding-bottom: 1px;
-        height: 90vh;
+
+    }
+    
+    .containerAll{
+        height:auto;
     }
 
     h1{
