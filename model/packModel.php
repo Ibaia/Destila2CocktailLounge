@@ -51,16 +51,40 @@ class packModel extends packClass{
     
     //Crear La lista
     public function setList() {
+        $this->OpenConnect();  // konexio zabaldu  - abrir conexión
         
-        $this->OpenConnect();
+        $sql = "CALL selectAllPacks()"; // SQL sententzia - sentencia SQL
         
-        $sql=")";
+        $result = $this->link->query($sql); // result-en ddbb-ari eskatutako informazio dena gordetzen da
+        // se guarda en result toda la información solicitada a la bbdd
         
-        //mysqli_free_result($result);
-        //$this->CloseConnect();
+        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            
+            $new=new packClass();
+            
+            $new->setIdPack($row['idPack']);
+            $new->setNombrePack($row['nombrePack']);
+            $new->setPrecio($row['precio']);
+                    
+            array_push($this->list, $new);
+        }
+        mysqli_free_result($result);
+        $this->CloseConnect();
+        
     }
     
-    
+    function getListJsonString() {
+        
+        $arr=array();
+        
+        foreach ($this->list as $object)
+        {
+            $vars = get_object_vars($object);
+            
+            array_push($arr, $vars);
+        }
+        return json_encode($arr);
+    }
     
     
     

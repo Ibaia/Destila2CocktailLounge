@@ -10,5 +10,49 @@
             </div> */
 
 $( document ).ready(function() {
-    
+    //Packs
+	$.ajax({
+       	type:"GET",
+       	url: "../controller/cLoadPacks.php", 
+    	dataType: "json",  // type of the result
+       	
+    	success: function(result){  
+       		
+       		console.log(result);
+     	},
+       	error : function(xhr) {
+   			alert("An error occured: " + xhr.status + " " + xhr.statusText);
+   		}
+  	});
+	
+	//Bebidas
+	$.ajax({
+       	type:"GET",
+       	url: "../controller/cLoadBebidas.php", 
+    	dataType: "json",  // type of the result
+       	
+    	success: function(result){  
+       		
+       		console.log(result);
+     	},
+       	error : function(xhr) {
+   			alert("An error occured: " + xhr.status + " " + xhr.statusText);
+   		}
+  	});
+	
+	//Cocteles
+	$.ajax({
+       	type:"GET",
+       	url: "../controller/cLoadCocteles.php", 
+    	dataType: "json",  // type of the result
+       	
+    	success: function(result){  
+       		
+       		console.log(result);
+     	},
+       	error : function(xhr) {
+   			alert("An error occured: " + xhr.status + " " + xhr.statusText);
+   		}
+  	});
+	
 });
