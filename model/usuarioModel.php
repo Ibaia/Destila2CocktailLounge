@@ -88,7 +88,61 @@ class usuarioModel extends usuarioClass{
         $this->CloseConnect();
     }
     
-    //Convierte el texto en objecto para recivirlo y utilizarlo
+    //Añadir un usuario
+    public function insertUser() {
+        
+        $this->OpenConnect();
+        
+        //Parametros
+        $nombre=$this->getNombre();
+        $apellido=$this->getApellido();
+        $usuario=$this->getUsuario();
+        $contrasenia=$this->getPass();
+        $numTel=$this->getTelefono();
+        $email=$this->getEmail();
+        $dni=$this->getDni();
+        
+        $sql="call spInsertUser('$nombre','$apellido','$usuario','$contrasenia','$numTel','$email','$dni')";
+        
+        //echo "sql=".$sql;
+        $result=$this->link->query($sql);
+        
+        if ($this->link->affected_rows  >=1){
+            return "Insertado";
+        } else {
+            return "Error al insertar";
+        }
+        $this->CloseConnect();
+    }
+    
+    //Update usuario
+    public function updateUser() {
+        
+        $this->OpenConnect();
+        
+        //Parametros
+        $id=$this->getId();
+        $nombre=$this->getNombre();
+        $apellido=$this->getApellido();
+        $usuario=$this->getUsuario();
+        $contrasenia=$this->getPass();
+        $numTel=$this->getTelefono();
+        $email=$this->getEmail();
+        $dni=$this->getDni();
+        
+        $sql="call spUpdateUser('$id','$nombre','$apellido','$usuario','$contrasenia','$numTel','$email','$dni')";
+        
+        //echo "sql=".$sql;
+        $result=$this->link->query($sql);
+        
+        if ($this->link->affected_rows  >=1){
+            return "Modificado";
+        } else {
+            return "Error al modificar";
+        }
+        $this->CloseConnect();
+    }
+    
     public function getListString(){
         $arr=array();
         
