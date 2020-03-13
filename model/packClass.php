@@ -34,9 +34,15 @@ class packClass{
         return $this->precio;
     }
     
-    public function setPack($precio)
+    public function setPrecio($precio)
     {
         $this->precio = $precio;
     }
+    
+    function getObjectVars()
+    {
+        $vars = get_object_vars($this);
+        return $vars;
+    }  
     
 }
