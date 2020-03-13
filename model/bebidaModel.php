@@ -53,15 +53,37 @@ class bebidaModel extends bebidaClass{
     public function setList() {
         
         $this->OpenConnect();
+        $sql="call spBebidas()";
+        $result= $this->link->query($sql);
         
-        $sql=")";
+        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            
+            $bebida= new bebidaModel;
+            $bebida->setIdBebida($row["idBebida"]);
+            $bebida->setNombre($row["nombre"]);
+            $bebida->setDescripcion($row["descripcion"]);
+            $bebida->setImg($row["img"]);
+            $bebida->settipo($row["nombreTipo"]);
 
-        //mysqli_free_result($result);
-        //$this->CloseConnect();
+            array_push($this->list, $bebida);
+        }
+        mysqli_free_result($result);
+        $this->CloseConnect();
     }
     
     
     
-    
+    public function getListString(){
+        $arr=array();
+        
+        foreach ($this->list as $object)
+        {
+            $vars = $object->getObjectVars();
+            
+            array_push($arr, $vars);
+        }
+        return json_encode($arr, JSON_FORCE_OBJECT);
+        //JSON_FORCE_OBJECT fuerza a lo que se reciba pase a objeto
+    }
     
 }

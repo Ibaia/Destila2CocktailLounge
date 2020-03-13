@@ -54,13 +54,48 @@ class reservasModel extends reservasClass{
         
         $this->OpenConnect();
         
-        $sql=")";
+        $sql="CALL spReservas()";
+        //echo $sql;
         
-        //mysqli_free_result($result);
-        //$this->CloseConnect();
+        $result= $this->link->query($sql);
+        
+        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            
+            $reservas= new reservasModel;
+            $reservas->setIdReserva($row["idReserva"]);
+            $reservas->setFecha($row["fecha"]);
+            $reservas->setIdUsuario($row["usuario"]);
+            $reservas->setPack($row["nombrePack"]);        
+            
+            array_push($this->list, $reservas);
+        }
+        mysqli_free_result($result);
+        $this->CloseConnect();
     }
     
+    //Borrar reserva
+    public function reservaDelete($idReserva) {
+        $this->OpenConnect();
+            
+        $sql="call spDeleteReserva('$idReserva')";
+            
+        $result= $this->link->query($sql);
+            
+        $this->CloseConnect();
+    }
     
+    public function getListString(){
+        
+        $arr=array();
+        
+        foreach ($this->list as $object)
+        {
+            $vars = $object->getObjectVars();
+            
+            array_push($arr, $vars);
+        }
+        return json_encode($arr);
+    }
     
     
     

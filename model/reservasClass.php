@@ -1,6 +1,6 @@
 <?php
 
-class resevaClass{
+class reservasClass{
     
     public $idReserva;
     public $fecha;

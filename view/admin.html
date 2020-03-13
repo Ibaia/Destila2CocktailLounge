@@ -17,13 +17,22 @@
 
 
 <body ng-controller="admin">
-
 <!--Contenido -->
 <div class="container">
   <h1 class="text-center">Panel de administracion</h1>
-   
+<div class="accordion" id="accordionExample">
+  <div class="card">
+    <div class="card-header" id="headingOne">
+      <h2 class="mb-0">
+        <button class="btn btn-link" type="button" data-toggle="collapse" data-target="#usuarios" aria-expanded="true" aria-controls="collapseOne">
+          Usuarios
+        </button>
+      </h2>
+    </div>
 
-  <!--Usuarios -->
+    <div id="usuarios" class="collapse show" aria-labelledby="headingOne" data-parent="#accordionExample">
+      <div class="card-body">
+         <!--Usuarios -->
     <div id="usuarios">
       <h3>Usuarios</h3>
       
@@ -194,7 +203,20 @@
       </table>
       <!--Fin datos usuarios -->
     </div>
+  </div>
+    </div>
+  </div>
   
+  <div class="card">
+    <div class="card-header" id="headingTwo">
+      <h2 class="mb-0">
+        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#Reservas" aria-expanded="false" aria-controls="collapseTwo">
+          Reservas
+        </button>
+      </h2>
+    </div>
+    <div id="Reservas" class="collapse" aria-labelledby="headingTwo" data-parent="#accordionExample">
+      <div class="card-body">
   
   <!--Reservas -->
     <div id="reservas">
@@ -208,23 +230,40 @@
             <th scope="col">Fecha Reserva</th>
             <th scope="col">Usuario</th>
             <th scope="col">Pack</th>
+            <th scope="col"></th>
           </tr>
         </thead>
 
         <tbody>
-          <tr>
+          <tr ng-repeat="reserva in reservas">
             <!--Angular Aqui -->
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
+            <th scope="row">{{reserva.idReserva}}</th>
+            <td>{{reserva.fecha}}</td>
+            <td>{{reserva.idUsuario}}</td>
+            <td>{{reserva.idPack}}</td>
+            <!--Borrar Reserva -->
+            <th>
+            	<td><button class="btn btn-primary" ng-click="deleteReserva(reserva.idReserva)">Borrar</button></td>
+            </th>
           </tr>
         </tbody>
       </table>
 
     </div>
     <!--Fin Reservas -->
-
+          </div>
+    </div>
+  </div>
+  <div class="card">
+    <div class="card-header" id="headingThree">
+      <h2 class="mb-0">
+        <button class="btn btn-link collapsed" type="button" data-toggle="collapse" data-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+          Bebida
+        </button>
+      </h2>
+    </div>
+    <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
+      <div class="card-body">
     <!--Bebidas -->
     <div id="bebidas">
 
@@ -242,21 +281,24 @@
         </thead>
 
         <tbody>
-          <tr>
+          <tr ng-repeat="bebida in bebidas">
             <!--Angular Aqui -->
-            <th scope="row">1</th>
-            <td>Mark</td>
-            <td>Otto</td>
-            <td>@mdo</td>
-            <td>@mdo</td>
+            <th scope="row">{{bebida.idBebida}}</th>
+            <td>{{bebida.nombre}}</td>
+            <td>{{bebida.descripcion}}</td>
+            <td>{{bebida.img}}</td>
+            <td>{{bebida.tipo}}</td>
           </tr>
         </tbody>
       </table>
 
     </div>
     <!--Fin Bebidas -->
-
+       </div>
+    </div>
   </div>
+</div>
+</div>
 <!--Fin Contenido -->
 </body>
 </html>
