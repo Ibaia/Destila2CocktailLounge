@@ -16,7 +16,7 @@ miAplicacion.controller('admin', function ($scope, $http) {
         console.log($scope.usuarios);
 
         $scope.modificarForm= function(usuario){
-        	
+        	$scope.IdUpdate=usuario.idUsuario;
         	$scope.nombreUpdate=usuario.nombre;
         	$scope.apellidoUpdate=usuario.apellido;
         	$scope.usuarioUpdate=usuario.usuario;
@@ -87,16 +87,26 @@ miAplicacion.controller('admin', function ($scope, $http) {
         }
     }
     $scope.ejecutarUpdateUser=function(){
+    	$scope.data = [{ nombre : $scope.nombreUpdate},
+        { apellido : $scope.apellidoUpdate},
+        { usuario : $scope.usuarioUpdate},
+        { password : $scope.passUpdate },
+        { telefono : $scope.telUpdate },
+        { email : $scope.emailUpdate},
+        { dni : $scope.dniUpdate},
+        { id : $scope.IdUpdate},
+        ];
+    //console.log($scope.data);
         $http({
             method: "get",
-            params: { id : $scope.idUsuario,
-            		nombre : $scope.nombreUsuario,
-                 	apellido : $scope.apellidoUsuario,
-                 	usuario : $scope.usuarioUsuario,
-                 	password : $scope.contrasenaUsuario ,
-                 	telefono : $scope.telUsuario ,
-                 	email : $scope.emailUsuario,
-                 	dni : $scope.dniUsuario},
+            params: { id : $scope.IdUpdate,
+            		nombre : $scope.nombreUpdate,
+                 	apellido : $scope.apellidoUpdate,
+                 	usuario : $scope.usuarioUpdate,
+                 	password : $scope.passUpdate ,
+                 	telefono : $scope.telUpdate ,
+                 	email : $scope.emailUpdate,
+                 	dni : $scope.dniUpdate},
             url: "../controller/cUpdateUser.php",
         }).then(function mySucces(result) {
             respuesta=result.data

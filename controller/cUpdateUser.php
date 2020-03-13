@@ -6,7 +6,7 @@ $login->setList();
 
 //Id
 $id=filter_input(INPUT_GET, 'id');
-$login->setId($id);
+$login->setIdUsuario($id);
 
 //Nombre
 $nombre=filter_input(INPUT_GET, 'nombre');
@@ -36,7 +36,8 @@ $login->setEmail($email);
 $dni=filter_input(INPUT_GET, 'dni');
 $login->setDni($dni);
 
-$result=$login->updateUser();
+//echo $id, $nombre, $apellido, $usuario, $contrasenia, $telefono, $email, $dni;
 
+$result=$login->updateUser();
 
 echo $result;

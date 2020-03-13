@@ -121,7 +121,7 @@ class usuarioModel extends usuarioClass{
         $this->OpenConnect();
         
         //Parametros
-        $id=$this->getId();
+        $id=$this->getIdUsuario();
         $nombre=$this->getNombre();
         $apellido=$this->getApellido();
         $usuario=$this->getUsuario();
