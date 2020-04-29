@@ -73,6 +73,31 @@ class reservasModel extends reservasClass{
         $this->CloseConnect();
     }
     
+    // Crear Una reserva
+    public function insertReserva(){
+        
+        $this->OpenConnect();
+        
+        //Parametros
+        $fecha=$this->getFecha();
+        $idUsu=$this->getIdUsuario();
+        $pack=$this->getPack();
+        
+        $sql= "call spInsertReserva('$fecha', '$idUsu', '$pack')";
+        echo $sql;
+        
+        $result=$this->link->query($sql);
+        
+        if ($this->link->affected_rows  >=1){
+            return "Insertado";
+        } else {
+            return "Error al insertar";
+        }
+        $this->CloseConnect();
+    }
+    
+    
+    
     //Borrar reserva
     public function reservaDelete($idReserva) {
         $this->OpenConnect();

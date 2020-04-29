@@ -119,7 +119,27 @@ class bebidaModel extends bebidaClass{
         }
         mysqli_free_result($result);
         $this->CloseConnect();
+    }
+    //Ejecutar el update de nuestras bebidas
+    public function updateBebida(){
+        $this->OpenConnect();
         
+        //Parametros
+        $id=$this->getIdBebida();
+        $nombre=$this->getNombre();
+        $descipcion=$this->getDescripcion();
+        
+        $sql="call spUpdateBebida('$id','$nombre','$descipcion')";
+        
+        //echo "sql=".$sql;
+        $result=$this->link->query($sql);
+        
+        if ($this->link->affected_rows  >=1){
+            return "Modificado";
+        } else {
+            return "Error al modificar";
+        }
+        $this->CloseConnect();
     }
     
     function getListJsonString() {
@@ -134,7 +154,7 @@ class bebidaModel extends bebidaClass{
         return json_encode($arr);
     }
     
-    public function getListString(){
+    function getListString(){
         $arr=array();
         
         foreach ($this->list as $object)

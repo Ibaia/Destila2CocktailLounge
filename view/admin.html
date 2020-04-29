@@ -254,6 +254,7 @@
           </div>
     </div>
   </div>
+  
   <div class="card">
     <div class="card-header" id="headingThree">
       <h2 class="mb-0">
@@ -262,6 +263,39 @@
         </button>
       </h2>
     </div>
+    <div class="modal fade bd-example-modal-lg updateBebida" tabindex="-1" role="dialog" aria-labelledby="UpdateBebida" aria-hidden="true">
+  		<div class="modal-dialog modal-lg">
+    	<div class="modal-content">
+    
+  <!-- Modificar Bebida form -->
+      <form id="modalBebidaUpdate">
+  		<h3>Modificar usuario</h3>
+  		<div class="form-row">
+  		  	<!--Id -->
+    		<div class="form-group col-md-6" readonly>
+      			<label for="id">Id</label>
+      			<input type="text" class="form-control" id="IdBebidaUpdate" ng-model="IdBebidaUpdate" placeholder="Id" readonly>
+    		</div>
+  		 <!--Nombre -->
+    		<div class="form-group col-md-6">
+      			<label for="nombre">Nombre</label>
+      			<input type="text" class="form-control" id="nombreBebidaUpdate" ng-model="nombreBebidaUpdate" placeholder="Nombre">
+    		</div>
+    		
+    	<!--Descipcion -->
+    		<div class="form-group col-md-6">
+      			<label for="apellido">Descripcion</label>
+      			<input type="text" class="form-control" id="descipcionUpdate" ng-model="descipcionBebidaUpdate" placeholder="Descripcion">
+    		</div>
+ 		</div>
+  		<button ng-click="ejecutarUpdateBebida()" type="button" class="btn btn-primary" data-toggle="modal" data-target=".updateBebida">Modificar bebida</button>
+		</form>
+	</div>
+	</div>
+	</div>
+	
+	<!-- Fin Formulario Editar Bebida -->
+	
     <div id="collapseThree" class="collapse" aria-labelledby="headingThree" data-parent="#accordionExample">
       <div class="card-body">
     <!--Bebidas -->
@@ -277,6 +311,7 @@
             <th scope="col">Descripcion</th>
             <th scope="col">Imagen</th>
             <th scope="col">Tipo</th>
+            <th scope="col"></th>
           </tr>
         </thead>
 
@@ -288,6 +323,7 @@
             <td>{{bebida.descripcion}}</td>
             <td>{{bebida.img}}</td>
             <td>{{bebida.tipo}}</td>
+			<td><button class="btn btn-primary" data-toggle="modal" data-target=".updateBebida" ng-click="modificarBebidaForm(bebida)">Modificar</button></td>
           </tr>
         </tbody>
       </table>
