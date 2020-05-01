@@ -60,7 +60,8 @@
 						<ul class="navbar-nav" id="navSession">
 						</ul>
 						<ul class="navbar-nav" id="navLogOut">
-						<li class="nav-item"><a class="nav-link logOutLink" href="javascript:void(0);">LogOut</a></li>
+							<li class="nav-item"><a class="nav-link logOutLink"
+								href="javascript:void(0);">LogOut</a></li>
 						</ul>
 					</div>
 				</nav>
@@ -180,7 +181,64 @@
 							<span aria-hidden="true">&times;</span>
 						</button>
 					</div>
-					<div class="modal-body">FORM REGISTER</div>
+					<div class="modal-body">
+						<!-- aniadir usuarios form -->
+						<form id="modalUsuarios">
+							<h3>Aniadir usuario</h3>
+							<div class="form-row">
+								<!--Nombre -->
+								<div class="form-group col-md-6">
+									<label for="nombre">Nombre</label> <input type="text"
+										class="form-control" id="nombre" placeholder="Nombre">
+								</div>
+
+								<!--Apellido -->
+								<div class="form-group col-md-6">
+									<label for="apellido">Apellido</label> <input type="text"
+										class="form-control" id="apellido" placeholder="Apellido">
+								</div>
+							</div>
+							<div class="form-row">
+								<!--Usuario -->
+								<div class="form-group col-md-6">
+									<label for="usuario">Usuario</label> <input type="text"
+										class="form-control" id="usureg" placeholder="Usuario">
+								</div>
+
+								<!--Contraseña -->
+								<div class="form-group col-md-6">
+									<label for="contrasena">Contraseña</label> <input
+										type="password" class="form-control" id="passreg"
+										placeholder="Contraseña">
+								</div>
+							</div>
+
+							<!--Telefono -->
+							<div class="form-group">
+								<label for="numtel">Numero telefono</label> <input type="number" maxlength="9"
+									class="form-control" id="numtel" placeholder="Telefono">
+							</div>
+
+							<div class="form-row">
+								<!--Email -->
+								<div class="form-group col-md-6">
+									<label for="email">Email</label> <input type="email"
+										class="form-control" id="email" placeholder="Email">
+								</div>
+								<!--DNI -->
+								<div class="form-group col-md-6">
+									<label for="dni">DNI</label> <input type="text" maxlength="9"
+										class="form-control" id="dni" placeholder="48963521C">
+								</div>
+
+							</div>
+
+						</form>
+						<!-- Fin aniadir usuarios form -->
+					</div>
+					<div class="modal-footer">
+						<button id="btnRegister" type="button" class="btn btn-primary">Registrarse</button>
+					</div>
 				</div>
 			</div>
 		</div>

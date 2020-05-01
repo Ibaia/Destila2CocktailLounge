@@ -54,8 +54,6 @@ $(document).ready(function() {
 				    
 				 success: function(sessionData){
 					 
-					 alert(sessionData);
-					 
 					 var html = "";			
 						
 						if(sessionData.tipoUsu==-1){
@@ -68,6 +66,9 @@ $(document).ready(function() {
 						}else if(sessionData.tipoUsu==1){
 							html += '<li class="nav-item"><a class="nav-link" href="view/admin.html">Panel Admin</a></li>'
 							$('#navLogOut').show();
+						}else{
+							 alert(sessionData);
+							 
 						}
 						
 					$('#navSession').html(html);
@@ -83,6 +84,51 @@ $(document).ready(function() {
 			location.reload(true);
 		}
 	});
+	
+	
+	//REGISTER
+	$('#btnRegister').click(function(){
+		var nombre=$('#nombre').val();
+		var apellido=$('#apellido').val();
+		var usu=$('#usureg').val();
+		var pass=$('#passreg').val();
+		var numtel=$('#numtel').val();
+		var email=$('#email').val();
+		var dni=$('#dni').val();
+		
+		
+		
+		if (usu=="") {
+			alert("Rellena el usuario")
+		}else if (pass==""){
+			alert("Rellena la contraseña")
+		}else{
+			/* Comprobar usu y contraseña*/
+			$.ajax({
+				 type:"GET",
+				 data:{'nombre':nombre, 'apellido':apellido, 'usuario':usu, 'password':pass, 'telefono':numtel, 'email':email, 'dni':dni},
+				 url: "./controller/cInsertUser.php", 
+				 dataType: "json",  //type of the result
+				    
+				 success: function(sessionData){
+					 
+					alert("Registrado con exito");
+					
+					
+					
+	 
+				},
+				 error : function(xhr) {
+					 alert("An error occured: " + xhr.status + " " + xhr.statusText);
+				}
+					 
+			});
+			location.reload(true);
+		}
+	});
+	
+	
+	
 	
 	//LogOut
 	$('.logOutLink').click(function(){
