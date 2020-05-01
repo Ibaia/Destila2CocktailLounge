@@ -73,6 +73,32 @@ class reservasModel extends reservasClass{
         $this->CloseConnect();
     }
     
+    //Crear La lista usuario
+    public function setListUsu($idUser) {
+       
+        $userid=$idUser;
+        
+        $this->OpenConnect();
+        
+        $sql="CALL spReservasUsu('$userid')";
+        //echo $sql;
+        
+        $result= $this->link->query($sql);
+        
+        while ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            
+            $reservas= new reservasModel;
+            $reservas->setIdReserva($row["idReserva"]);
+            $reservas->setFecha($row["fecha"]);
+            $reservas->setIdUsuario($row["idUsuario"]);      
+            $reservas->setPack($row["nombrePack"]);   
+            
+            array_push($this->list, $reservas);
+        }
+        mysqli_free_result($result);
+        $this->CloseConnect();
+    }
+    
     // Crear Una reserva
     public function insertReserva(){
         

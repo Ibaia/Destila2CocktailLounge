@@ -43,7 +43,7 @@ class reservasClass{
     /*ID PACK*/
     public function getPack()
     {
-        return $this->idUsuario;
+        return $this->idPack;
     }
     
     public function setPack($idPack)
