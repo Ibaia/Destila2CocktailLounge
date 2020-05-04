@@ -31,6 +31,8 @@ $(document).ready(function() {
 		$('#navSession').html(html);
 		idUser=sessionData.idUsu;
 		
+		//verreservas
+		
 		$.ajax({
 			 type:"GET",
 			 data:{'idUsuario':idUser},
@@ -47,12 +49,38 @@ $(document).ready(function() {
 						html += '<tr>'
 						html += '<td class="align-middle">'+reserva.fecha+'</td>'
 						html += '<td class="align-middle">'+reserva.idPack+'<td>'
-						html += '<td><button class="btn btn-primary mr-3 btn-block" name="'+reserva.idReserva+'" id="botonBorrarMiReserva">Borrar</button><button class="btn btn-primary btn-block" id="botonUpdateMiReserva">Modificar</button></td>	'
+						html += '<td><button class="btn btn-primary mr-3 btn-block" name="'+reserva.idReserva+'" id="botonBorrarMiReserva">Borrar</button><button class="btn btn-primary btn-block" name="'+reserva.idReserva+'" id="botonUpdateMiReserva">Modificar</button></td>	'
 						html += '</tr>'
 					
 					});
 
 					$('#listaMisReservas').html(html);
+					
+					
+
+					//Borrar Reserva
+					
+					$('#botonBorrarMiReserva').click(function(){
+						var idReserva="";
+						
+						idReserva= $(this).attr('name');
+						$.ajax({
+							type : "GET",
+							data : {'idReserva':idReserva},
+							url : "../controller/cReservaDelete.php",
+							dataType : "text", // type of the result
+
+							success : function(sessionData) {
+								alert(sessionData)
+								location.reload(true);
+
+							},
+							error : function(xhr) {
+								alert("An error occured: " + xhr.status + " " + xhr.statusText);
+							}
+						});
+						
+					});
 			},
 			 error : function(xhr) {
 				 alert("An error occured: " + xhr.status + " " + xhr.statusText);
@@ -62,14 +90,14 @@ $(document).ready(function() {
 		
 		
 		
+		
 		},
 		error : function(xhr) {
 			alert("An error occured: " + xhr.status + " " + xhr.statusText);
 		}
 	});
 	
-	//verreservas
-
+	
 	
 	
 	//LogOut

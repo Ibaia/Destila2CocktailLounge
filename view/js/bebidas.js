@@ -17,7 +17,7 @@ $(document).ready(function() {
 				html += '<li class="nav-item"><a class="nav-link modalLoginLink" href="javascript:void(0);" data-toggle="modal" data-target="#modalLogin">Login</a></li>'
 				html += '<li class="nav-item"><a class="nav-link modalRegisterLink" href="javascript:void(0);" data-toggle="modal" data-target="#modalRegister">Register</a></li>'
 			}else if(sessionData.tipoUsu==0){
-				html += '<li class="nav-item"><a class="nav-link" href="view/vMisReservas.html">Mis Reservas</a></li>'
+				html += '<li class="nav-item"><a class="nav-link" href="vMisReservas.html">Mis Reservas</a></li>'
 				$('#navLogOut').show();
 			}else if(sessionData.tipoUsu==1){
 				html += '<li class="nav-item"><a class="nav-link" href="admin.html">Panel Admin</a></li>'
