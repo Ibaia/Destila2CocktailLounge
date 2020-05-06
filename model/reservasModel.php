@@ -96,6 +96,29 @@ class reservasModel extends reservasClass{
         $this->CloseConnect();
     }
     
+    //Modificar reserva
+    public function updateReserva(){
+    	$this->OpenConnect();
+    	
+    	//parametros
+    	$idReserva=$this->getIdReserva();
+    	$fecha=$this->getFecha();
+    	$pack=$this->getPack();
+    	
+    	$sql="call spUpdateReserva($idReserva, $fecha, $pack)";
+    	
+    	//echo "sql=".$sql;
+        $result=$this->link->query($sql);
+        
+        if ($this->link->affected_rows  >=1){
+            return "Modificado";
+        } else {
+            return "Error al modificar";
+        }
+        $this->CloseConnect();
+    	
+    }
+    
     
     
     //Borrar reserva
