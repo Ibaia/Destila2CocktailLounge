@@ -1,9 +1,9 @@
 $(document).ready(function() {
-	// Session Check
+// Session Check
 	
 	$.ajax({
 		type : "GET",
-		url : "./controller/cCheckSession.php",
+		url : "../controller/cCheckSession.php",
 		dataType : "json", // type of the result
 
 		success : function(sessionData) {
@@ -17,10 +17,10 @@ $(document).ready(function() {
 				html += '<li class="nav-item"><a class="nav-link modalLoginLink" href="javascript:void(0);" data-toggle="modal" data-target="#modalLogin">Login</a></li>'
 				html += '<li class="nav-item"><a class="nav-link modalRegisterLink" href="javascript:void(0);" data-toggle="modal" data-target="#modalRegister">Register</a></li>'
 			}else if(sessionData.tipoUsu==0){
-				html += '<li class="nav-item"><a class="nav-link" href="view/vMisReservas.html">Mis Reservas</a></li>'
+				html += '<li class="nav-item"><a class="nav-link" href="vMisReservas.html">Mis Reservas</a></li>'
 				$('#navLogOut').show();
 			}else if(sessionData.tipoUsu==1){
-				html += '<li class="nav-item"><a class="nav-link" href="view/admin.html">Panel Admin</a></li>'
+				html += '<li class="nav-item"><a class="nav-link" href="admin.html">Panel Admin</a></li>'
 				$('#navLogOut').show();
 			}
 			
@@ -49,10 +49,11 @@ $(document).ready(function() {
 			$.ajax({
 				 type:"GET",
 				 data:{'usuario':usu, 'pass':pass},
-				 url: "./controller/cLogin.php", 
+				 url: "../controller/cLogin.php", 
 				 dataType: "json",  //type of the result
 				    
-				 success: function(sessionData){
+				 success: function(sessionData){					 
+					
 					 
 					 var html = "";			
 						
@@ -68,7 +69,6 @@ $(document).ready(function() {
 							$('#navLogOut').show();
 						}else{
 							 alert(sessionData);
-							 
 						}
 						
 					$('#navSession').html(html);
@@ -84,7 +84,6 @@ $(document).ready(function() {
 			location.reload(true);
 		}
 	});
-	
 	
 	//REGISTER
 	$('#btnRegister').click(function(){
@@ -107,7 +106,7 @@ $(document).ready(function() {
 			$.ajax({
 				 type:"GET",
 				 data:{'nombre':nombre, 'apellido':apellido, 'usuario':usu, 'password':pass, 'telefono':numtel, 'email':email, 'dni':dni},
-				 url: "./controller/cInsertUser.php", 
+				 url: "../controller/cInsertUser.php", 
 				 dataType: "json",  //type of the result
 				    
 				 success: function(sessionData){
@@ -127,15 +126,12 @@ $(document).ready(function() {
 		}
 	});
 	
-	
-	
-	
 	//LogOut
 	$('.logOutLink').click(function(){
 	
 		$.ajax({
 			type:"GET",
-			url: "./controller/cLogOut.php", 
+			url: "../controller/cLogOut.php", 
 			datatype: "text",  //type of the result
 	   	
 			success: function(result){  				
@@ -147,6 +143,113 @@ $(document).ready(function() {
 		});
 		
 		
+	});
+	
+	
+	// Packs
+	$.ajax({
+		type : "GET",
+		url : "../controller/cLoadPacks.php",
+		dataType : "json", // type of the result
+
+		success : function(result) {
+
+			console.log(result);
+
+			var html = "";
+
+			html += '<h2 class="text-white text-center pt-5 pb-5">NUESTROS PACKS</h2>'
+			html += '<div class="row">'	
+
+			$.each(result, function(index, pack) {
+				html += '<div class="col-sm-4 col-12 border border-light p-3">'
+				html += '<h5 class="text-white text-center">&bull;'+pack.nombrePack+'</h5>'
+				html += '<p class="text-white text-center">&#8227;<i>Precio: '+pack.precio+'€</i></p>'
+				html += '</div>'
+			});
+			
+			
+			html += '</div>'
+			$('#loadPacks').html(html);
+
+		},
+		error : function(xhr) {
+			alert("An error occured: " + xhr.status + " " + xhr.statusText);
+		}
+	});
+
+	// Bebidas
+	$.ajax({
+		type : "GET",
+		url : "../controller/cLoadBebidas.php",
+		dataType : "json", // type of the result
+
+		success : function(result) {
+
+			console.log(result);
+			
+			var html = "";
+
+			html += '<h2 class="text-white text-center pt-5 pb-5">NUESTRAS BEBIDAS</h2>'
+			html += '<div class="row">'	
+
+			$.each(result, function(index, bebida) {
+				html += '<div class="row">'
+				html += '<div class="col-12 col-sm-3">'
+				html += '<img class="imgIndex shadow-sm" src="'+bebida.img+'">'
+				html += '</div>'
+				html += '<div class="col-sm-9 col-12">'
+				html += '<h4 class="text-white">'+bebida.nombre+'</h4>'
+				html += '<p class="text-white">'+bebida.descripcion+'</p>'
+				html += '</div>'
+				html += '</div>'	
+				html += '<br>'
+			});
+			
+			
+			html += '</div>'
+			$('#loadBebidas').html(html);
+		},
+		error : function(xhr) {
+			alert("An error occured: " + xhr.status + " " + xhr.statusText);
+		}
+	});
+
+	// Cocteles
+	$.ajax({
+		type : "GET",
+		url : "../controller/cLoadCocteles.php",
+		dataType : "json", // type of the result
+
+		success : function(result) {
+
+			console.log(result);
+			
+			var html = "";
+
+			html += '<h2 class="text-white text-center pt-5 pb-5">NUESTROS COCTELES</h2>'
+			html += '<div class="row">'	
+
+			$.each(result, function(index, bebida) {
+				html += '<div class="row">'		
+				html += '<div class="col-sm-9 col-12">'
+				html += '<h4 class="text-white">'+bebida.nombre+'</h4>'
+				html += '<p class="text-white">'+bebida.descripcion+'</p>'
+				html += '</div>'
+				html += '<div class="col-12 col-sm-3">'
+				html += '<img class="imgIndex shadow-sm" src="'+bebida.img+'">'
+				html += '</div>'
+				html += '</div>'	
+				html += '<br>'
+			});
+			
+			
+			html += '</div>'
+			$('#loadCocteles').html(html);
+		},
+		error : function(xhr) {
+			alert("An error occured: " + xhr.status + " " + xhr.statusText);
+		}
 	});
 
 });

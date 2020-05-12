@@ -1,0 +1,15 @@
+body{
+    background-image: url("../img/bg.png");
+    background-repeat: repeat;
+}
+
+#modalUsuarios{
+	padding: 15px;
+}
+
+#modalUsuariosUpdate{
+	padding: 15px;
+}
+#modalBebidaUpdate {
+    padding: 15px;
+}
