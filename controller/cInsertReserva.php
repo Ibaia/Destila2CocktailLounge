@@ -1,7 +1,7 @@
 <?php
-include_once '../model/reservaModel.php';
+include_once '../model/reservasModel.php';
 
-$newReserva = new reservaModel();
+$newReserva = new reservasModel();
 $newReserva->setList();
 
 //Fecha

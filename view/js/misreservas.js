@@ -24,7 +24,7 @@ $(document).ready(function() {
 				
 				$('#navLogOut').show();
 			}else if(sessionData.tipoUsu==1){
-				html += '<li class="nav-item"><a class="nav-link" href="view/admin.html">Panel Admin</a></li>'
+				html += '<li class="nav-item"><a class="nav-link" href="admin.html">Panel Admin</a></li>'
 				$('#navLogOut').show();
 			}
 			
