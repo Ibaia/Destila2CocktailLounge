@@ -73,6 +73,30 @@ class packModel extends packClass{
         
     }
     
+    //get id by name
+    public function getIdByNamePack($nombrePack) {
+        $this->OpenConnect();  // konexio zabaldu  - abrir conexión
+        
+        $sql = "CALL spGetIdByPackName('$nombrePack')"; // SQL sententzia - sentencia SQL
+        
+        $result = $this->link->query($sql); // result-en ddbb-ari eskatutako informazio dena gordetzen da
+        // se guarda en result toda la información solicitada a la bbdd
+        
+        if ($row = mysqli_fetch_array($result, MYSQLI_ASSOC)) {
+            
+            $new=new packClass();
+            
+            $new->setIdPack($row['idPack']);
+            $new->setNombrePack($row['nombrePack']);
+            $new->setPrecio($row['precio']);
+            
+            array_push($this->list, $new);
+        }
+        mysqli_free_result($result);
+        $this->CloseConnect();
+        
+    }
+    
     function getListJsonString() {
         
         $arr=array();

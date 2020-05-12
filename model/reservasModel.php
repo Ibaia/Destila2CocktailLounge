@@ -131,7 +131,7 @@ class reservasModel extends reservasClass{
         $fecha=$this->getFecha();
         $pack=$this->getPack();
         
-        $sql="call spUpdateReserva($idReserva, $fecha, $pack)";
+        $sql="call spUpdateReserva('$idReserva', '$fecha', '$pack')";
         
         //echo "sql=".$sql;
         $result=$this->link->query($sql);

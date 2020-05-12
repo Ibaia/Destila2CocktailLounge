@@ -57,8 +57,8 @@ $(document).ready(function() {
 						    
 						 success: function(sessionData){
 							 
-							alert("Reservado con exito");		
-			 
+							 alert("Reservado con exito");		
+							 window.location.replace("vMisReservas.html");
 						},
 						 error : function(xhr) {
 							 alert("An error occured: " + xhr.status + " " + xhr.statusText);
@@ -66,7 +66,7 @@ $(document).ready(function() {
 							 
 					});
 					
-//				location.reload(true);
+					
 				}
 			}
 			

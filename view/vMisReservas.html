@@ -72,7 +72,7 @@
 			<div class="contenidoMain">
 				<table class="table table-dark">
 					<thead>
-						<tr>					
+						<tr>
 							<th>Fecha Reserva</th>
 							<th>Pack</th>
 							<th></th>
@@ -80,7 +80,7 @@
 					</thead>
 
 					<tbody id="listaMisReservas">
-					
+
 					</tbody>
 				</table>
 			</div>
@@ -104,6 +104,55 @@
 		</div>
 		<!-- FIN FOOTER -->
 
+
+		<!-- Modal update -->
+		<div class="modal fade" id="modificarReservaModal" tabindex="-1"
+			role="dialog" aria-labelledby="modificarReservaModalLabel"
+			aria-hidden="true">
+			<div class="modal-dialog" role="document">
+				<div class="modal-content">
+					<div class="modal-header">
+						<h5 class="modal-title" id="exampleModalLabel">Modificar
+							Reserva</h5>
+						<button type="button" class="close" data-dismiss="modal"
+							aria-label="Close">
+							<span aria-hidden="true">&times;</span>
+						</button>
+					</div>
+					<div class="modal-body" id="contenidoModalUpdateReserva">
+						
+					<form class="w-50 m-5 text-white">
+					
+					<div class="form-group">
+					
+						<label>ID</label> 
+						<input type="text" class="form-control" placeholder="ID" id="idModificar" disabled>
+					
+						<label>Pack</label> 
+						<select class="form-control" id="packSelectModificar" required>
+							
+						</select>
+						<label>Fecha</label> 
+						<input type="date" class="form-control" placeholder="Fecha" id="fechaModificar" required> 
+					</div>
+
+					
+					
+				</form>
+
+
+
+
+					</div>
+					<div class="modal-footer">
+						<button type="button" class="btn btn-secondary"
+							data-dismiss="modal">Close</button>
+						<button type="button" id="updateMiReserva" class="btn btn-primary">Modificar</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		<!-- fin Modal update -->
 	</div>
 
 	<script src="js/jquery-3.4.1.min.js"></script>

@@ -12,7 +12,7 @@ $reserva->setFecha($fecha);
 
 
 $pack=filter_input(INPUT_GET, "pack");
-$reserva->setPack($fecha);
+$reserva->setPack($pack);
 
 $result= $reserva->updateReserva();
 
